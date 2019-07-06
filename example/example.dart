@@ -42,7 +42,7 @@ class LoginAnimationDemoState extends State<LoginAnimationDemo>{
                 var request = await httpClient.getUrl(Uri.parse(url));
                 var response = await request.close();
                 if (response.statusCode == HttpStatus.ok) {
-                  _result = await response.transform(utf8.decoder).join();
+                  _result = await utf8.decoder.bind(response)join();
 
                   //拿到数据后，对数据进行梳理
                   loginErrorMessageController.showErrorMessage("网络异常");
